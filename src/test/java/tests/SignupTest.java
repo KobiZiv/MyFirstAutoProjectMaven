@@ -20,7 +20,7 @@ public class SignupTest extends BaseTest {
 	@Test
 	public void tc_02SignInFirstNameFail() {
 		SignupPage sp = new SignupPage(driver);
-		sp.signup("1321", "nakash", "kobi1@gmail.com", "ZivZiv12");
+		sp.signup("1321", "ziv", "kobi1@gmail.com", "ZivZiv12");
 		String expected = "This field should not contain digits";
 		String actual = sp.errorFirstNameMsg();
 		Assert.assertEquals(actual, expected);
@@ -53,12 +53,12 @@ public class SignupTest extends BaseTest {
 		Assert.assertEquals(actual, expected);
 	}
 
-//	@Test
-//	public void tc_06SignInSuccessful() {
-//		SignupPage sp = new SignupPage(driver);
-//		sp.signup("kobi", "ziv", "kobi26@gmail.com", "Zivziv12");
-//		String expected = "Confirmation was sent";
-//		String actual = sp.confirmationMsg();
-//		Assert.assertEquals(actual, expected);
-//	}
+	@Test
+	public void tc_06SignInSuccessful() {
+		SignupPage sp = new SignupPage(driver);
+		sp.signup("kobi", "ziv", "kobi28@gmail.com", "Zivziv12");
+		String expected = "Confirmation was sent";
+		String actual = sp.confirmationMsg();
+		Assert.assertEquals(actual, expected);
+	}
 }
