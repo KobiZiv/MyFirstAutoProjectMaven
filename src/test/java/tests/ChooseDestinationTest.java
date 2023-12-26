@@ -38,11 +38,4 @@ public class ChooseDestinationTest extends BaseTest {
 		Assert.assertTrue(ltep.isLaTourEiffel());
 	}
 
-//	@Test
-//	public void tc_03SelectCurrency() {
-//		MainPage mp = new MainPage(driver);
-//		mp.closeCookies();
-//		mp.hoverOverGlobeBtn();
-//		mp.chooseCurrency("euro");
-//	}
 }

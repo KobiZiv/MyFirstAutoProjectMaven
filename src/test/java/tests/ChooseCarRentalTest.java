@@ -61,11 +61,4 @@ public class ChooseCarRentalTest extends BaseTest {
 		Assert.assertEquals(actual, expected);
 	}
 
-//	@Test
-//	public void tc_03SelectCurrency() {
-//		MainPage mp = new MainPage(driver);
-//		mp.closeCookies();
-//		mp.hoverOverGlobeBtn();
-//		mp.chooseCurrency("euro");
-//	}
 }

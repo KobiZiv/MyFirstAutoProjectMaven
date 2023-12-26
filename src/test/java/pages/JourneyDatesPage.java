@@ -28,15 +28,4 @@ public class JourneyDatesPage extends BasePage {
 		click(flexDatesBtn);
 	}
 
-//	public void moveToNextMonth() {
-//		click(nextMonthBtn);
-//	}
-//
-//	public void moveBackAmonth() {
-//		click(previousMonthBtn);
-//	}
-//
-//	public void clickNext() {
-//		click(previousMonthBtn);
-//	}
 }

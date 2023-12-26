@@ -1,16 +1,12 @@
 package tests;
 
-import java.util.Arrays;
-import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import pages.BasicsPage;
 import pages.DestinationsPage;
 import pages.InterestsPage;
 import pages.JourneyDatesPage;
-import pages.LoginPage;
 import pages.MainPage;
 import pages.SuggestionsPage;
 import pages.TripPurposePage;
@@ -20,11 +16,6 @@ public class TripPurposeTest extends BaseTest{
 	public void tc_01ChooseTripPurpose() {
 		MainPage mp = new MainPage(driver);
 		mp.closeCookies();
-//		mp.hoverOverGlobeBtn();
-//		mp.chooseLanguage("Hebrew");
-//		waiting(600);
-//		mp.hoverOverGlobeBtn();
-//		mp.chooseLanguage("English");
 		mp.buildYourOwnTrip();
 		mp.closePopUp();
 		BasicsPage bp = new BasicsPage(driver);

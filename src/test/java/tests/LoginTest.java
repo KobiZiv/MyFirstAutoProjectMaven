@@ -14,7 +14,7 @@ public class LoginTest extends BaseTest {
 		lp.closeCookies();
 		lp.moveToSignin();
 		lp.login("kobi@gmail.com", "zivziv1998");
-		String expected = "Unable to login with provided credentials.";
+		String expected = "Unable to log in with provided credentials.";
 		String actual =lp.errorMesg();
 		Assert.assertEquals(actual, expected);
 	}

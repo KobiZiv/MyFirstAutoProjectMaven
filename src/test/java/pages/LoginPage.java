@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class LoginPage extends MainPage {
 
 	// login
-	@FindBy(xpath = "//button[contains(text(),'Sign in')]")
+	@FindBy(css = ".nav-right__user .btn-dark-blue")
 	private WebElement signupBtn;
 	@FindBy(css = "#email")
 	private WebElement emailField;

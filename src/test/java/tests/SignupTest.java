@@ -30,7 +30,7 @@ public class SignupTest extends BaseTest {
 	public void tc_03SignInLastNameFail() {
 		SignupPage sp = new SignupPage(driver);
 		sp.signup("kobi", "1234", "kobi1@gmail.com", "ZivZiv12");
-		String expected = "This field should not contain only digits";
+		String expected = "This field should not contain digits";
 		String actual = sp.errorLastNameMsg();
 		Assert.assertEquals(actual, expected);
 	}
