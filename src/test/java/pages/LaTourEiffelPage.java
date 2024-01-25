@@ -13,7 +13,7 @@ public class LaTourEiffelPage extends MainPage {
 		super(driver);
 	}
 
-	public boolean isLaTourEiffel() {
+	public boolean isEiffelTower() {
 		if (getText(pageTitle).equalsIgnoreCase("Eiffel Tower")) {
 			return true;
 		}

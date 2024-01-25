@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,17 +22,23 @@ public class SignupPage extends MainPage {
 	private WebElement submitBtn;
 	@FindBy(css = ".input__password-toggle>.vector-icon")
 	private WebElement showPassword;
-//	@FindBy(css = ".sign-up-form__login-button>span")
-//	private WebElement backToLoginBtn;
+	// @FindBy(css = ".sign-up-form__login-button>span")
+	// private WebElement backToLoginBtn;
+
 	// validation
-	@FindBy(css = ".sign-up-form__fields-name .form-error-message")
+	@FindBy(css = ".form-error-message")
 	private WebElement errorFirstName;
 	@FindBy(css = ".sign-up-form__fields-last-name div.form-error-message")
 	private WebElement errorLastName;
+
 	@FindBy(css = ".form-error-message")
 	private WebElement errorEmail;
+	// private WebElement errorEmail;
+
 	@FindBy(css = ".form-error-message")
 	private WebElement errorPassword;
+	// private WebElement errorPassword;
+
 	@FindBy(css = ".sign-up-success__title")
 	private WebElement signUpSucc;
 
@@ -45,28 +52,44 @@ public class SignupPage extends MainPage {
 		fillTextClearAllText(emailField, email);
 		fillTextClearAllText(passwordField, password);
 		click(showPassword);
-		click(checkBoxSignup);
+		WebElement checkBoxFrame = driver.findElement(By.id("sign-up-form__accept-terms"));
+		String inputValue = checkBoxFrame.getAttribute("checked");
+		{
+			if (inputValue != null) {
+				// The "checked" attribute is present
+			} else {
+				// The "checked" attribute is not present
+				click(checkBoxSignup);
+			}
+		}
 		click(submitBtn);
 	}
-	
-	// validation
-	public String errorFirstNameMsg() {
-		waitUntilElementToBeClickable(errorFirstName);
-		return getText(errorFirstName);
+
+	public String getErrorMsg() {
+		String error = "";
+		try {
+			waitUntilElementToBeClickable(errorFirstName);
+			error = getText(errorFirstName);
+		} catch (Exception e) {
+		}
+		try {
+
+			error = getText(errorLastName);
+		} catch (Exception e) {
+		}
+		try {
+			waitUntilElementToBeClickable(errorEmail);
+			error = getText(errorEmail);
+		} catch (Exception e) {
+		}
+		try {
+			waitUntilElementToBeClickable(errorPassword);
+			error = getText(errorPassword);
+		} catch (Exception e) {
+		}
+		return error;
 	}
 
-	public String errorLastNameMsg() {
-		waitUntilElementToBeClickable(errorLastName);
-		return getText(errorLastName);
-	}
-	public String errorEmailMsg() {
-		waitUntilElementToBeClickable(errorEmail);
-		return getText(errorEmail);
-	}
-	public String errorPasswordMsg() {
-		waitUntilElementToBeClickable(errorPassword);
-		return getText(errorPassword);
-	}
 	public String confirmationMsg() {
 		waitUntilElementToBeClickable(signUpSucc);
 		return getText(signUpSucc);

@@ -1,7 +1,6 @@
 package pages;
 
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -44,7 +43,7 @@ public class CarRentalPage extends BasePage {
 
 	// searchForCars
 	@FindBy(css = "[title='search for cars']")
-	private WebElement searchForCarsButton;
+	private WebElement searchForCarsBtn;
 
 	// selectPickUpDate
 	@FindBy(css = "#txtPickup")
@@ -140,7 +139,7 @@ public class CarRentalPage extends BasePage {
 	}
 
 	public void searchForCars() {
-		click(searchForCarsButton);
+		click(searchForCarsBtn);
 	}
 
 	public void selectPickUpDate(String exDay, String exMonthAndYear) {
@@ -183,7 +182,8 @@ public class CarRentalPage extends BasePage {
 						.click();
 			}
 		}
-		List<WebElement> allDays = driver.findElements(By.xpath("//body[1]/form[1]/div[3]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr/td/a[1]"));	
+		List<WebElement> allDays = driver.findElements(By.xpath(
+				"//body[1]/form[1]/div[3]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr/td/a[1]"));
 		for (WebElement ele : allDays) {
 			String exDayText = ele.getText();
 			if (exDayText.equals(exDay)) {
@@ -192,8 +192,8 @@ public class CarRentalPage extends BasePage {
 			}
 		}
 	}
-	
-	public void SelectCarType(String type) {
+
+	public void selectCarType(String type) {
 		click(selectCarTypeDDM);
 		try {
 			for (WebElement carType : carTypeList) {
@@ -205,4 +205,17 @@ public class CarRentalPage extends BasePage {
 		} catch (Exception e) {
 		}
 	}
+
+	public void carRentalInfo(String country, String pickUpLocation, String pickUpTime, String carType,
+			String dropOffLocation, String dropOffTime, String age) {
+		chooseCountryName(country);
+		choosePickUpLocation(pickUpLocation);
+		choosePickUpTime(pickUpTime);
+		selectCarType(carType);
+		chooseDropOffLocation(dropOffLocation);
+		chooseDropOffTime(dropOffTime);
+		setDriverAge(age);
+		click(searchForCarsBtn);
+	}
 }
+

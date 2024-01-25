@@ -8,7 +8,7 @@ public class LoginPage extends MainPage {
 
 	// login
 	@FindBy(css = ".nav-right__user .btn-dark-blue")
-	private WebElement signupBtn;
+	private WebElement signInBtn;
 	@FindBy(css = "#email")
 	private WebElement emailField;
 	@FindBy(css = "[name='password']")
@@ -43,7 +43,7 @@ public class LoginPage extends MainPage {
 	}
 
 	public void moveToSignin() {
-		click(signupBtn);
+		click(signInBtn);
 	}
 
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -137,5 +138,9 @@ public class MainPage extends BasePage {
 				break;
 			}
 		}
+	}
+	public void moveToNewPage() {
+		ArrayList<String> carWindow = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(carWindow.get(1));
 	}
 }

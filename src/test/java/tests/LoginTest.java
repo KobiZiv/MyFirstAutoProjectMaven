@@ -3,29 +3,24 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import pages.LoginPage;
-
-public class LoginTest extends BaseTest {
+public class LoginTest extends AppBaseTest {
 
 	
 	@Test
 	public void tc_01LoginPassFail() {
-		LoginPage lp = new LoginPage(driver);
-		lp.closeCookies();
-		lp.moveToSignin();
-		lp.login("kobi@gmail.com", "zivziv1998");
+		loginPage.closeCookies();
+		loginPage.moveToSignin();
+		loginPage.login("kobi@gmail.com", "zivziv1998");
 		String expected = "Unable to log in with provided credentials.";
-		String actual =lp.errorMesg();
+		String actual =loginPage.errorMesg();
 		Assert.assertEquals(actual, expected);
 	}
 	
 	@Test
 	public void tc_02Login() {
-		LoginPage lp = new LoginPage(driver);
-		lp.login("kobiziv10@gmail.com", "Zivziv123");
+		loginPage.login("kobiziv10@gmail.com", "Zivziv123");
 		String expected = "Hi, kobi";
-		String actual =lp.loginSuccessMsg();
+		String actual =loginPage.loginSuccessMsg();
 		Assert.assertEquals(actual, expected);
-	}
-	
+	}	
 }

@@ -1,47 +1,31 @@
 package tests;
 
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.BasicsPage;
-import pages.DestinationsPage;
-import pages.InterestsPage;
-import pages.JourneyDatesPage;
-import pages.MainPage;
-import pages.SuggestionsPage;
-import pages.TripPurposePage;
 
-public class TripPurposeTest extends BaseTest{
+public class TripPurposeTest extends AppBaseTest {
 	@Test
 	public void tc_01ChooseTripPurpose() {
-		MainPage mp = new MainPage(driver);
-		mp.closeCookies();
-		mp.buildYourOwnTrip();
-		mp.closePopUp();
-		BasicsPage bp = new BasicsPage(driver);
-		bp.inspireMe();
-		JourneyDatesPage jdp = new JourneyDatesPage(driver);
-		jdp.setFlexDates();
-		TripPurposePage tpp = new TripPurposePage(driver);
+		mainPage.closeCookies();
+		mainPage.buildYourOwnTrip();
+		mainPage.closePopUp();
+		basicsPage.inspireMe();
+		journeyDatesPage.setFlexDates();
 		try {
-			tpp.chooseTripPurpose("ספורט");
+			tripPurposePage.chooseTripPurpose("ספורט");
 		} catch (Exception e) {
 
 		}
 		try {
-			tpp.chooseTripPurpose("Sport");
+			tripPurposePage.chooseTripPurpose("Sport");
 		} catch (Exception e) {
 
-		}					
-		InterestsPage ip = new InterestsPage(driver);
-		ip.rateInterest(8,4,6,2,3,7,5,6);
-		ip.showResults();
-		SuggestionsPage sp = new SuggestionsPage(driver);
-		sp.chooseOneSuggestion("Barcelona");
-		DestinationsPage dp = new DestinationsPage(driver);
+		}
+		interestsPage.rateInterest(8, 4, 6, 2, 3, 7, 5, 6);
+		interestsPage.showResults();
+		suggestionsPage.chooseOneSuggestion("Barcelona");
 		String expected = "Your personalized trip to Barcelona";
-		String actual = dp.getOopsMsg();
+		String actual = destinationsPage.getOopsMsg();
 		Assert.assertEquals(actual, expected);
 	}
-
 }

@@ -1,9 +1,13 @@
 package pages;
 
+import java.io.IOException;
 import java.time.Duration;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -11,6 +15,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+
+import com.github.javafaker.File;
 
 public class BasePage {
 	WebDriver driver;
@@ -40,7 +48,6 @@ public class BasePage {
 	}
 
 	public void moveToNewTabs() {
-
 		Keys.chord(Keys.CONTROL, "2");
 	}
 
@@ -58,14 +65,13 @@ public class BasePage {
 	public void selectByValue(WebElement el, String value) {
 		Select s = new Select(el);
 		s.selectByValue(value);
-
 	}
 
 	public void selectByVisibleText(WebElement el, String value) {
 		Select s = new Select(el);
 		s.selectByVisibleText(value);
 	}
-
+	
 	// wait
 	public void waitUntilElementToBeClickable(WebElement el) {
 		wait.until(ExpectedConditions.elementToBeClickable(el));
@@ -112,4 +118,5 @@ public class BasePage {
 		driver.switchTo().alert().sendKeys(text);
 		driver.switchTo().alert().accept();
 	}
+	
 }
